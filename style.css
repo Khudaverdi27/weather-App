@@ -26,6 +26,7 @@ form {
 .fa-magnifying-glass {
     top: 40%;
     left: 59%;
+    cursor: pointer;
 }
 
 .grid-container {
@@ -45,7 +46,7 @@ form {
 }
 
 .grid-item {
-    padding: 8px;
+    padding: 5px;
     text-align: center;
 }
 
@@ -61,8 +62,8 @@ form {
     grid-row: 2 / span 3;
 }
 
-.temprature {
-    margin-left: 5rem;
+.temprature,
+.fa-moon {
     font-size: 4rem;
 }
 
@@ -99,7 +100,8 @@ form {
     }
 
 
-    .temprature {
+    .temprature,
+    .fa-moon {
         margin-left: 1rem;
         font-size: 3rem;
     }
