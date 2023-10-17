@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Weather App</title>
+    <link rel="shortcut icon" href="weather-svgrepo-com.svg" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,300;6..12,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav class="navbar mt-3">
+        <div class=" container">
+            <a class="navbar-brand text-white fs-3" href="#">
+                <img src="weather-svgrepo-com.svg" alt="logo" width="50" height="44">Weather
+            </a>
+            <form class="" role="search">
+                <input class="inputUser form-control rounded-pill text-white bg-light-dark position-relative "
+                    type="search" placeholder="Search Location" aria-label="Search">
+                <i class="fa-solid fa-magnifying-glass position-absolute text-info"></i>
+            </form>
+            <div class="degreeBox">
+                <input type="radio" class="btn-check celcius  " name="options-base" id="option5" autocomplete="off"
+                    checked>
+                <label class="btn bg-light-dark text-white rounded-pill" for="option5">°C, m/s</label>
+                <input type="radio" class="btn-check franheyt" name="options-base" id="option6" autocomplete="off">
+                <label class="btn bg-light-dark text-white rounded-pill" for="option6">°F, mph</label>
+            </div>
+        </div>
+    </nav>
+    <div class="grid-container container">
+        <div class="grid-item">
+            <span class="fs-1">Amsterdam, Netherlands</span>
+            <p class="fs-4">Tuesday 17 October 2023 | 1:45</p>
+        </div>
+        <div class="grid-item">
+            <p class="fs-5">Wind</p>
+            <span class="fs-4">2m/s</span>
+        </div>
+        <div class="grid-item">
+            <p class="fs-5">Humidity</p>
+            <span class="fs-4">78%</span>
+        </div>
+        <div class="grid-item">
+            <p class="fs-5">UV index</p>
+            <span class="rounded-circle uvIndex px-2 fs-4">0</span>
+        </div>
+        <div class="grid-item">
+
+            <span class="temprature fw-bold"><i class="me-4 fa-regular fa-moon text-white"></i>17°C</span>
+            <p class="text-white fs-3">Clear sky</p>
+            <p class="fs-4">Feels like 5°C</p>
+            <p class="fs-4">Light breeze
+
+            </p>
+        </div>
+
+        <div class="grid-item">
+            <p class="fs-5">Visibility</p>
+            <span class="fs-4">10km</span>
+        </div>
+        <div class="grid-item">
+            <p class="fs-5">Cloudiness</p>
+            <span class="fs-4">0%</span>
+        </div>
+        <div class="grid-item">
+            <p class="fs-5">Chance of rain</p>
+            <span class="fs-4">0%</span>
+        </div>
+
+        <div class="grid-item">
+            <p class="fs-5">Sunrise</p>
+            <span class="fs-4">06:37</span>
+        </div>
+        <div class="grid-item">
+            <p class="fs-5">Sunset</p>
+            <span class="fs-4">18:11</span>
+        </div>
+        <div class="grid-item">
+            <p class="fs-5">Waxing Crescent</p>
+            <i class="fa-solid fa-earth-europe d-block text-white fs-4"></i>
+        </div>
+
+
+    </div>
+
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
