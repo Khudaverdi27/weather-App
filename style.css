@@ -36,6 +36,7 @@ form {
 .cityErrorMsg {
     display: none;
     font-size: 12px;
+    z-index: 2;
 }
 
 .grid-container {

@@ -57,10 +57,12 @@ const getResult = async (cityName) => {
         if (response.ok) {
             const result = await response.json();
             displayResult(result);
+            cityErrorMsg.style.display = "none"
             gridContainer.style.visibility = 'visible';
         } else {
             gridContainer.style.visibility = 'hidden'
             cityErrorMsg.style.display = "block"
+            spinner.style.display = 'none';
             console.error("API'den data alınmadı.");
         }
     } catch (error) {
