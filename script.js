@@ -1,6 +1,8 @@
 //set variable
 const inputUser = document.querySelector(".inputUser");
-// const searchIcon = document.querySelector(".fa-magnifying-glass");
+// const celciusBtn = document.querySelector(".celciusBtn");
+// const franheytBtn = document.querySelector(".franheytBtn");
+const searchIcon = document.querySelector(".fa-magnifying-glass");
 const country = document.querySelector(".country");
 const city = document.querySelector(".city");
 const image = document.querySelector('.image');
@@ -43,9 +45,15 @@ const setQuery = (e) => {
 };
 
 inputUser.addEventListener("keypress", setQuery);
-// searchIcon.addEventListener("click", () => {
-//     console.log("Test");
-// });
+
+//when click search button works
+searchIcon.addEventListener("click", () => {
+    spinner.style.display = 'inline-flex';
+    getResult(inputUser.value);
+    fetchWorldTime(inputUser.value);
+
+});
+
 //openWeather API for weather informations
 const getResult = async (cityName) => {
     const url = "https://api.openweathermap.org/data/2.5/";
@@ -57,6 +65,7 @@ const getResult = async (cityName) => {
         if (response.ok) {
             const result = await response.json();
             displayResult(result);
+
             cityErrorMsg.style.display = "none"
             gridContainer.style.visibility = 'visible';
         } else {
@@ -72,6 +81,7 @@ const getResult = async (cityName) => {
 
 //show UI weather info
 const displayResult = (result) => {
+
     country.textContent = result.sys.country
     city.textContent = result.name + ","
 
@@ -85,14 +95,21 @@ const displayResult = (result) => {
         image.setAttribute("src", "icon/02d")
     }
     //weather info
-    changeContent[0].textContent = Math.round(result.wind.speed) + "m/s"
+    let windSpeed = Math.round(result.wind.speed)
+    let mainTemp = Math.round(result.main.temp - 272.15)
+    let mainFeels = Math.round(result.main.feels_like - 272.15)
+    let minTemp = Math.round(result.main.temp_max
+        - 272.15)
+    let maxTemp = Math.round(result.main.temp_min - 272.15)
+
+    changeContent[0].textContent = windSpeed + "m/s"
     changeContent[1].textContent = result.main.humidity + "%"
-    changeContent[3].textContent = Math.round(result.main.temp - 272.15) + "°C"
-    changeContent[4].textContent = Math.round(result.main.feels_like - 272.15)
-    changeContent[5].textContent = `Max:${Math.round(result.main.temp_max
-        - 272.15)}°C Min:${Math.round(result.main.temp_min - 272.15)}°C`
+    changeContent[3].textContent = mainTemp + "°C"
+    changeContent[4].textContent = mainFeels
+    changeContent[5].textContent = `Max:${minTemp}°C Min:${maxTemp}°C`
     changeContent[6].textContent = Math.round((result.visibility) / 1000) + "km"
     changeContent[7].textContent = result.clouds.all + "%"
+
     if (result.clouds.all >= 50 && result.clouds.all <= 75) {
         changeContent[8].textContent = 55 + "%"
     } else if (result.clouds.all >= 75) {
@@ -102,6 +119,7 @@ const displayResult = (result) => {
 
     }
     skyCoundation.textContent = result.weather[0].description
+
 }
 
 //sunrisesunset API for sunrise and sunset informations
@@ -119,13 +137,13 @@ async function sunRiseSunSet(long, lat) {
     } catch (error) {
         console.error("timestamp error:", error)
     }
-    changeContent[9].textContent = sunriseSetArr[sunriseSetArr.length - 2] + "AM"
+    changeContent[9].textContent = sunriseSetArr[sunriseSetArr.length - 2]
 
     let newSunSetHour = Number((sunriseSetArr[sunriseSetArr.length - 1]).slice(0, 1)) + 12
     let newSunSetMinute = Number((sunriseSetArr[sunriseSetArr.length - 1]).slice(2, 4))
 
     newSunSetMinute = newSunSetMinute < 10 ? "0" + newSunSetMinute : newSunSetMinute
-    changeContent[10].textContent = `${newSunSetHour}:${newSunSetMinute}PM `
+    changeContent[10].textContent = `${newSunSetHour}:${newSunSetMinute}`
 }
 
 
@@ -174,6 +192,7 @@ function nameMonth(month) {
     const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     return monthNames[month - 1]
 }
+
 
 
 
