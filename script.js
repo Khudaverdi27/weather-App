@@ -4,6 +4,7 @@ const inputUser = document.querySelector(".inputUser");
 const country = document.querySelector(".country");
 const city = document.querySelector(".city");
 const image = document.querySelector('.image');
+const spinner = document.querySelector('.spinner');
 const skyCoundation = document.querySelector(".skyCoundation");
 const changeContent = document.querySelectorAll(".changeContent");
 const currentTime = document.querySelector(".currentTime");
@@ -34,6 +35,7 @@ const iconMappings = {
 //when press enter key works
 const setQuery = (e) => {
     if (e.keyCode === 13) {
+        spinner.style.display = 'inline-flex';
         getResult(inputUser.value);
         fetchWorldTime(inputUser.value);
         e.preventDefault()
@@ -141,6 +143,7 @@ async function fetchWorldTime(valu) {
 
         if (response.ok) {
             const result = await response.json();
+            spinner.style.display = 'none';
             localeTime(result)
         } else {
             console.error('Error:', response.statusText);
