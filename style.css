@@ -93,6 +93,7 @@ form {
 }
 
 .loader {
+
     width: 48px;
     height: 48px;
     position: relative;
@@ -201,6 +202,11 @@ form {
     }
 
     .spinner {
-        height: 120vh;
+        top: 20%;
+        height: 100vh;
+    }
+
+    .loader {
+        margin-bottom: 350px;
     }
 }
