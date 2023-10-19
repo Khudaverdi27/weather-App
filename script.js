@@ -1,6 +1,6 @@
 //set variable
 const inputUser = document.querySelector(".inputUser");
-const searchIcon = document.querySelector(".fa-magnifying-glass");
+// const searchIcon = document.querySelector(".fa-magnifying-glass");
 const country = document.querySelector(".country");
 const city = document.querySelector(".city");
 const image = document.querySelector('.image');
@@ -14,13 +14,21 @@ const gridContainer = document.querySelector(".grid-container");
 //weather icons
 const iconMappings = {
     '01d': '01d.png',
+    '01n': '01n.png',
     '02d': '02d.png',
+    '02n': '02n.png',
     '03d': '03d.png',
+    '03n': '03n.png',
     '04d': '04d.png',
+    '04n': '04n.png',
     '09d': '09d.png',
+    '09n': '09n.png',
     '10d': '10d.png',
+    '10n': '10n.png',
     '13d': '13d.png',
+    '13n': '13n.png',
     '50d': '50d.png',
+    '50n': '50n.png',
 };
 
 //when press enter key works
@@ -33,9 +41,9 @@ const setQuery = (e) => {
 };
 
 inputUser.addEventListener("keypress", setQuery);
-searchIcon.addEventListener("click", () => {
-    console.log("Test");
-});
+// searchIcon.addEventListener("click", () => {
+//     console.log("Test");
+// });
 //openWeather API for weather informations
 const getResult = async (cityName) => {
     const url = "https://api.openweathermap.org/data/2.5/";
