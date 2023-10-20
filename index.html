@@ -19,19 +19,23 @@
 </head>
 
 <body>
+    <!-- pre-loader -->
     <div class="spinner">
         <div class="loader"></div>
     </div>
     <nav class="navbar mt-3">
         <div class=" container">
+            <!-- logo -->
             <a class="navbar-brand text-white fs-3" href="#">
                 <img src="weather-svgrepo-com.svg" alt="logo" width="50" height="44">Weather
             </a>
+            <!-- search-bar -->
             <form class="" role="search">
                 <input class="inputUser form-control rounded-pill text-white bg-light-dark position-relative "
                     type="search" placeholder="Search Location" aria-label="Search">
                 <i class="fa-solid fa-magnifying-glass position-absolute text-info"></i>
             </form>
+            <!-- change buttons -->
             <div class="degreeBox">
                 <input type="radio" class="btn-check" name="options-base" id="option5" autocomplete="off" checked>
                 <label class="celciusBtn btn bg-light-dark text-white rounded-pill" for="option5">°C, m/s</label>
@@ -40,9 +44,11 @@
             </div>
         </div>
     </nav>
+    <!-- error box -->
     <div class=" d-flex justify-content-center ">
         <span class="cityErrorMsg py-1 px-2 bg-white text-danger fw-bolder rounded-pill">City not founded</span>
     </div>
+    <!-- main content -->
     <div class="grid-container container">
         <div class="grid-item">
             <span class="fs-1 city">City,</span> <span class="country fs-1">Country</span>
