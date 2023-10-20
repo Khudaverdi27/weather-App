@@ -1,7 +1,7 @@
 //set variable
 const inputUser = document.querySelector(".inputUser");
-// const celciusBtn = document.querySelector(".celciusBtn");
-// const franheytBtn = document.querySelector(".franheytBtn");
+const celciusBtn = document.querySelector(".celciusBtn");
+const franheytBtn = document.querySelector(".franheytBtn");
 const searchIcon = document.querySelector(".fa-magnifying-glass");
 const country = document.querySelector(".country");
 const city = document.querySelector(".city");
@@ -43,8 +43,26 @@ const setQuery = (e) => {
         e.preventDefault()
     }
 };
-
+//addEventListeners
 inputUser.addEventListener("keypress", setQuery);
+franheytBtn.addEventListener("click", franheytButtonClick);
+celciusBtn.addEventListener("click", celciusButtonClick);
+
+//only one callculation in  updateTemperature function
+function franheytButtonClick() {
+    updateTemperature('F');
+    franheytBtn.removeEventListener("click", franheytButtonClick);
+    celciusBtn.addEventListener("click", celciusButtonClick);
+}
+
+function celciusButtonClick() {
+    updateTemperature('C');
+    celciusBtn.removeEventListener("click", celciusButtonClick);
+    franheytBtn.addEventListener("click", franheytButtonClick)
+}
+
+
+
 
 //when click search button works
 searchIcon.addEventListener("click", () => {
@@ -65,7 +83,6 @@ const getResult = async (cityName) => {
         if (response.ok) {
             const result = await response.json();
             displayResult(result);
-
             cityErrorMsg.style.display = "none"
             gridContainer.style.visibility = 'visible';
         } else {
@@ -98,15 +115,12 @@ const displayResult = (result) => {
     let windSpeed = Math.round(result.wind.speed)
     let mainTemp = Math.round(result.main.temp - 272.15)
     let mainFeels = Math.round(result.main.feels_like - 272.15)
-    let minTemp = Math.round(result.main.temp_max
-        - 272.15)
-    let maxTemp = Math.round(result.main.temp_min - 272.15)
 
     changeContent[0].textContent = windSpeed + "m/s"
     changeContent[1].textContent = result.main.humidity + "%"
     changeContent[3].textContent = mainTemp + "°C"
-    changeContent[4].textContent = mainFeels
-    changeContent[5].textContent = `Max:${minTemp}°C Min:${maxTemp}°C`
+    changeContent[4].textContent = mainFeels + "°C"
+    changeContent[5].textContent = result.weather[0].main
     changeContent[6].textContent = Math.round((result.visibility) / 1000) + "km"
     changeContent[7].textContent = result.clouds.all + "%"
 
@@ -193,6 +207,22 @@ function nameMonth(month) {
     return monthNames[month - 1]
 }
 
+//change measurements
+function updateTemperature(unit) {
+    let toSpeed = changeContent[0].textContent.slice(0, -3);
+    let mainTemp = changeContent[3].textContent.slice(0, -2);
+    let feelsTemp = changeContent[4].textContent.slice(0, -2);
+
+    if (unit === 'F') {
+        changeContent[0].textContent = Math.round(toSpeed * 2.24) + "mph";
+        changeContent[3].textContent = Math.round(Number(mainTemp * 9 / 5) + 32) + "°F";
+        changeContent[4].textContent = Math.round(Number(feelsTemp * 9 / 5) + 32) + "°F";
+    } else if (unit === 'C') {
+        changeContent[0].textContent = Math.round(toSpeed / 2.24) + "m/s";
+        changeContent[3].textContent = Math.round((Number(mainTemp) - 32) * 5 / 9) + "°C";
+        changeContent[4].textContent = Math.round((Number(feelsTemp) - 32) * 5 / 9) + "°C";
+    }
+}
 
 
 

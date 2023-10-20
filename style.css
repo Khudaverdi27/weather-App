@@ -5,7 +5,7 @@
 }
 
 body {
-    background-color: #178AAC;
+    background-color: #124fa6;
     font-family: 'Nunito Sans', sans-serif;
 }
 
@@ -87,7 +87,7 @@ form {
     align-items: center;
     position: absolute;
     top: 15%;
-    background-color: #178AAC;
+    background-color: #124fa6;
     height: 80vh;
     width: 100%;
     z-index: 1;
@@ -203,7 +203,7 @@ form {
     }
 
     .spinner {
-        top: 20%;
+        top: 29%;
         height: 100vh;
     }
 
