@@ -208,11 +208,11 @@ form {
     }
 
     .spinner {
-        top: 25%;
-        height: 100vh;
+        top: 0%;
+        height: 120vh;
     }
 
     .loader {
-        margin-bottom: 350px;
+        margin-bottom: 300px;
     }
 }
